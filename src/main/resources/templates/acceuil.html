@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    
+
+<head>        
+
+        <!-- Meta -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+
+        <!-- Title -->
+        <title>LIBRAIRIE</title>
+
+        <!-- Favicon -->
+        <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+
+        <!-- Fonts -->
+        <link th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i}" rel="stylesheet" />
+        <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+        
+        <!-- Mobile Menu -->
+        <link th:href="@{/css/mmenu.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/css/mmenu.positioning.css}" rel="stylesheet" type="text/css" />
+
+        <!-- Stylesheet -->
+        <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+     
+    </head>
+
+    <body>
+
+        <!-- Start: Header Section -->
+        <header id="header-v1" class="navbar-wrapper inner-navbar-wrapper">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-default">
+                        <div class="row">
+                           
+                            <div class="col-md-9">
+                                <!-- Header Topbar -->
+                                <div class="header-topbar hidden-sm hidden-xs">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="topbar-info">
+                                                <a th:href="@{/image/show}"><i class="fa fa-home"></i>HOME</a>
+                                                <span>/</span>
+                                                <a href=""><i class="fa fa-envelope"></i>PROFILE</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="topbar-links">
+                                                <a href="signin.html"><i class="fa fa-lock"></i>Logout</a>
+                                                <span>|</span>
+                                                <div class="header-cart dropdown">
+                                                    <a data-toggle="dropdown" class="dropdown-toggle" th:href="@{/reservationEmprunteur}">
+                                                        <i class="fa fa-shopping-cart" ></i>
+                                                        <small  th:text="${reservation}" >0</small></a>
+                                                   
+     <br> <br>  <br>
+   </div></div></div></div></div></div></div></nav> </div></div>
+                                                
+        </header>
+        <!-- End: Header Section -->
+
+        <!-- Start: Products Section -->
+        <div id="content" class="site-content">
+                <main id="main" class="site-main">
+                    <div class="books-full-width">
+                        <div class="container">
+                        
+                        <br>
+                        <br>
+                        <br>
+                       
+                            <!-- Start: Search Section -->
+                            <section class="search-filters">
+                                <div class="filter-box">
+                                    <h3>What are you looking for at the library?</h3>
+                                    
+                                    <form autocomplete="off" th:action="@{/image/show}" th:object="${searchForm}" method="post" role="form">
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" th:field="*{title}" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                            </div>
+                                        </div>
+                                   
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <select th:field= "*{categories}" name="category" id="category" class="form-control">
+                                                	<option  value="">All Categories</option>
+                                                    <option  th:each="cat : ${categorie}" th:value="${cat}" th:text="${cat}"></option>
+                                                     
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="submit" value="Search">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="clear"></div>
+                            </section>
+                            <!-- End: Search Section -->
+                            
+                            
+                              <!-- Start: Livre List -->
+                                                      
+	<!-- <span><button th:href="@{/image/like(id=${img.id})}"><i th:text=${img.likes} class="fa fa-thumbs-up" aria-hidden="true">0</i></button>
+	<a th="@{/image/like(id=${img.id})}">ok</a>
+	 3..</span></p>-->
+	  			                      
+                         
+  	  <div class="booksmedia-fullwidth">
+         <ul>
+         
+             <li th:each="img : ${images}">
+                <figure>
+                    <a href=""><img th:src="@{${img.photo}}"  alt="Book"></a>
+                         <figcaption>
+               <header>
+                    <h4 th:text=${img.title}><a href="books-media-detail-v2.html"></a></h4>
+                    <p><strong>Author:</strong></p><p th:text=${img.author}>
+               </header>
+                    <p class="blog-text" th:text=${img.synopsis}></p>
+                     <div class="actions">
+
+             </div>
+                    </figcaption>
+        </figure>
+        <p><a th:href="@{/image/livreDetails(id=${img.id})}" class="read-more-btn">Reserver</a>
+		<span><i class="fa fa-comment"></i>3..</span></p>                                           
+        </li>
+                           
+        </ul>                      
+     </div>    
+           
+	  			                    
+                               <!-- Fin: Livre List -->    
+                                  
+                                   
+                               
+                            
+   
+  </div>
+                            
+                        
+                    </div>
+                </main>
+            </div>
+        
+        <!-- End: Products Section -->
+
+    </body>
+
+
+</html>

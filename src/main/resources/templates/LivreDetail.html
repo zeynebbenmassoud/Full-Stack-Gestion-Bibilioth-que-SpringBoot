@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    
+
+<head>        
+
+        <!-- Meta -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+
+        <!-- Title -->
+        <title>LIBRARIAE</title>
+
+        <!-- Favicon -->
+        <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+
+        <!-- Fonts -->
+        <link th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i}" rel="stylesheet" />
+        <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+
+        <!-- Mobile Menu -->
+        <link th:href="@{/css/mmenu.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/css/mmenu.positioning.css}" rel="stylesheet" type="text/css" />
+
+        <!-- Responsive Table -->
+        <link rel="stylesheet" type="text/css" th:href="@{/css/responsivetable.css}" />
+
+        <!-- Stylesheet -->
+        <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body>
+ <!-- Start: Header Section -->
+        <header id="header-v1" class="navbar-wrapper inner-navbar-wrapper">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-default">
+                        <div class="row">
+                           
+                       <div class="col-md-9">
+                       
+                           <!-- Header Topbar -->
+                           <div class="header-topbar hidden-sm hidden-xs">
+                               <div class="row">
+                                   <div class="col-sm-6">
+                                       <div class="topbar-info">
+                                           <a th:href="@{/image/show}"><i class="fa fa-home"></i>HOME</a>
+                                           <span>/</span>
+                                           <a href=""><i class="fa fa-envelope"></i>PROFILE</a>
+                                       </div>
+                                   </div>
+                                   <div class="col-sm-6">
+                                       <div class="topbar-links">
+                                           <a href="signin.html"><i class="fa fa-lock"></i>Logout</a>
+                                           <span>|</span>
+                                           <div class="header-cart dropdown">
+                                               <a data-toggle="dropdown" class="dropdown-toggle" th:href="@{/reservationEmprunteur}">
+                                                   <i class="fa fa-shopping-cart"></i>
+                                                   <small th:text="${reservation}" >0</small></a>
+                                                   
+     <br> <br>  <br> 
+   </div></div></div></div></div></div></div></nav> </div></div>
+                                                
+        </header>
+        <!-- End: Header Section -->
+
+	<br> <br>  <br> <br> <br>  <br> 
+	  <div class="booksmedia-detail-box">
+	      <div class="detailed-box">
+	          <div class="col-xs-12 col-sm-5 col-md-3">
+	              <div class="post-thumbnail">
+	                  <img th:src="@{${photo}}"  class="img img-responsive img-fluid" alt="Book Image"> 
+	              </div>
+          </div>
+          <div class="col-xs-12 col-sm-7 col-md-6">
+              <div class="post-center-content">
+                  <h2 th:text="${title}"></h2>
+                  
+                  <strong>Author:</strong>  <span th:text="${author}" class="mb-3"></span><br><br>
+                  <strong>Genre :</strong>  <span th:text="${categorie}" class="mb-3"></span><br><br>
+                  <strong>synopsis :</strong>  <span th:text="${synopsis}" class="mb-3"></span><br><br>
+                  
+               	<div class="actions">
+                      <ul>
+                          <li>
+                               <strong>Nombre disponible aujourd'hui: </strong> <span   th:text="${nbr_avai}"></span>
+                             
+                          </li>
+                          
+                          <li>
+                              <p   data-toggle="blog-tags" data-placement="top" >
+                                  <i class="fa fa-comment"></i> 3 comment
+                              </p>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          
+          
+          
+          
+          
+                                    <!-- Reserver -->
+                                    
+           <p th:text="${error}"></p>                         
+				  
+		   <form th:object="${res}"  method="POST" th:action="@{/reservation/save(id=${id})}" >
+		  
+           <div class="col-xs-12 col-sm-12 col-md-3 ">
+               <div class="post-right-content">
+                 <h4>Reserver now</h4><br>
+						 <label>dateReservation</label><br>
+						 <input type="date" th:field="*{dateReservation}"/><br><br>
+						 <button type="submit" class="btn btn-dark-gray">Reserver</button>
+                </div>
+            </div></form>
+            </div>                     
+              </div>                  <!--Fin  Reserver -->
+                      <br> <br> <br> <br>
+                      
+            <br> <br> <br> <br>
+            <br> <br> <br> <br>
+            <br> <br> <br> <br>
+            <br> <br> <br> <br>
+            <br> <br> <br> <br>
+             
+             
+         <div class="booksmedia-detail-box">
+	      <div class="detailed-box">
+	          <div class="col-xs-12 col-sm-5 col-md-3">
+	          <div class="actions">
+	           			<label>Commentaire : </label><br>
+	         
+	         
+	     	  
+	     	  <strong  th:each="comment : ${comment}"  th:text="${comment.comment}"><br> <br></strong>
+                  	 
+		                	
+                        
+                                
+                 
+                 </div></div></div></div>              
+					  
+
+
+
+
+    </body>
+
+
+</html>

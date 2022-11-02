@@ -1,0 +1,24 @@
+
+          
+                                    <!-- Reserver -->
+                                    
+           <p th:text="${error}"></p>                         
+				  
+		   <form th:object="${res}"  method="POST" th:action="@{/reservation/save(id=${id})}" >
+		  
+		  
+                <div class="col-lg-6 col-md-6 form-group">                  
+                    <label for="inputFirstName">id</label>
+                    <input readonly="true" type="text" th:field="*{id}" class="form-control" id="inputFirstName" >                  
+                </div>
+                
+           <div class="col-xs-12 col-sm-12 col-md-3 ">
+               <div class="post-right-content">
+                 <h4>Reserver now</h4><br>
+						 <label>dateReservation</label><br>
+						 <input type="date" th:field="*{dateReservation}"/><br><br>
+						 <button type="submit" class="btn btn-dark-gray">Reserver</button>
+                </div>
+            </div></form>
+                               
+                                <!--Fin  Reserver -->
